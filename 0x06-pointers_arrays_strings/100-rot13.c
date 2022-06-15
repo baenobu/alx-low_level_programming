@@ -1,29 +1,43 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * main - check the code
+ * rot13 - Encodes a string using rot13.
  *
- * Return: Always 0.
+ * @str: pointer to string.
+ *
+ * Return: Encoded str.
  */
-int main(void)
+char *rot13(char *str)
 {
-    char s[] = "ROT13 (\"rotate by 13 places\", sometimes hyphenated ROT-13) is a simple letter substitution cipher.\n";
-    char *p;
+	int i = 0, j;
 
-    p = rot13(s);
-    printf("%s", p);
-    printf("------------------------------------\n");
-    printf("%s", s);
-    printf("------------------------------------\n");
-    p = rot13(s);
-    printf("%s", p);
-    printf("------------------------------------\n");
-    printf("%s", s);
-    printf("------------------------------------\n");
-    p = rot13(s);
-    printf("%s", p);
-    printf("------------------------------------\n");
-    printf("%s", s);
-    return (0);
+	char alph[52] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+		'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+		'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b',
+		'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+		'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+		'w', 'x', 'y', 'z'};
+
+	char rot13_key[52] = {'N', 'O', 'P', 'Q', 'R', 'S',
+		'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C',
+		'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+		'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
+		'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g',
+		'h', 'i', 'j', 'k', 'l', 'm'};
+
+	while (str[i])
+	{
+		for (j = 0; j < 52; j++)
+		{
+			if (str[i] == alph[j])
+			{
+				str[i] = rot13_key[j];
+				break;
+			}
+		}
+
+		i++;
+	}
+
+	return (str);
 }
