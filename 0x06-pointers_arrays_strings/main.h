@@ -13,5 +13,6 @@ char *leet(char *n);
 char *rot13(char *n);
 char *rot13(char *);
 char *rot13(char *str);
+void print_number(int n);
 
 #endif /* MAIN_H */
